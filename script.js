@@ -1,8 +1,6 @@
-// Aktifkan Animasi Muncul saat Scroll
 AOS.init({ duration: 1000, once: true });
 
-// Ambil data dari penyimpanan browser
-let tasks = JSON.parse(localStorage.getItem('taskhub_app_data')) || [];
+let tasks = JSON.parse(localStorage.getItem('taskhub_v12_data')) || [];
 
 function renderTasks() {
     const list = document.getElementById('taskList');
@@ -14,11 +12,7 @@ function renderTasks() {
     count.innerText = tasks.length;
 
     if (tasks.length === 0) {
-        list.innerHTML = `
-            <div class="text-center py-20">
-                <p class="text-slate-300 font-medium">Workspace kosong. Tambahkan tugas untuk memulai.</p>
-            </div>
-        `;
+        list.innerHTML = `<div class="text-center py-20 text-slate-300 font-medium">Workspace kosong.</div>`;
         return;
     }
 
@@ -33,48 +27,26 @@ function renderTasks() {
                 </div>
                 <div>
                     <h4 class="font-bold text-slate-800">${task.title}</h4>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> ${task.date || 'Tiap Hari'}</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> ${task.date || 'Hari Ini'}</p>
                 </div>
             </div>
-            <button onclick="deleteTask(${index})" class="text-slate-200 hover:text-red-500 transition-all">
-                <i class="fas fa-trash-alt"></i>
-            </button>
+            <button onclick="deleteTask(${index})" class="text-slate-200 hover:text-red-500 transition-all"><i class="fas fa-trash-alt"></i></button>
         `;
         list.appendChild(item);
     });
 
-    localStorage.setItem('taskhub_app_data', JSON.stringify(tasks));
+    localStorage.setItem('taskhub_v12_data', JSON.stringify(tasks));
 }
 
 function addTask() {
     const title = document.getElementById('taskInput');
     const date = document.getElementById('dateInput');
-
-    if (!title.value.trim()) {
-        alert("Isi judul tugas!");
-        return;
-    }
-
-    tasks.unshift({
-        title: title.value,
-        date: date.value,
-        done: false
-    });
-
-    title.value = '';
-    date.value = '';
-    renderTasks();
+    if (!title.value.trim()) return;
+    tasks.unshift({ title: title.value, date: date.value, done: false });
+    title.value = ''; date.value = ''; renderTasks();
 }
 
-function toggleTask(index) {
-    tasks[index].done = !tasks[index].done;
-    renderTasks();
-}
+function toggleTask(index) { tasks[index].done = !tasks[index].done; renderTasks(); }
+function deleteTask(index) { tasks.splice(index, 1); renderTasks(); }
 
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    renderTasks();
-}
-
-// Jalankan fungsi saat web dibuka
 renderTasks();
