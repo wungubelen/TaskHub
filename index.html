@@ -1,33 +1,89 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>TaskHub</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskHub - Productivity Simplified</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-[#f8fafc] text-slate-900 font-['Plus_Jakarta_Sans']">
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="features.html">Fitur</a>
-  <a href="tasks.html">Task</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+    <nav class="fixed w-full z-[100] glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
+                    <i class="fas fa-layer-group text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight">Task<span class="text-blue-600">Hub</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
+                <a href="#features" class="hover:text-blue-600 transition">Fitur</a>
+                <a href="#app" class="hover:text-blue-600 transition text-blue-600 font-bold underline decoration-2 underline-offset-8">Mulai App</a>
+                <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
+                <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Kontak</a>
+            </div>
+        </div>
+    </nav>
 
-<header class="hero">
-  <h1>TaskHub</h1>
-  <p>All-in-One Task & Productivity Platform</p>
-  <a class="btn" href="features.html">Pelajari Fitur</a>
-</header>
+    <section id="home" class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 data-aos="fade-up" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+                Kelola Tugas Dengan <br><span class="gradient-text">Gaya Modern.</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-slate-500 max-w-2xl mx-auto mb-12">
+                TaskHub membantu Anda mencatat, mengatur jadwal, dan memantau progres pekerjaan secara real-time.
+            </p>
+        </div>
+    </section>
 
-<section class="section">
-  <h2>Apa itu TaskHub?</h2>
-  <p>
-    TaskHub adalah platform digital berbasis SaaS yang membantu pengguna
-    mencatat tugas, mengatur jadwal, memantau progres, dan meningkatkan produktivitas.
-  </p>
-</section>
+    <section id="app" class="py-20 bg-white border-y border-slate-100 shadow-inner">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden animate-glow">
+                <div class="p-8 border-b border-slate-100 flex flex-col md:flex-row md:items-center gap-4 bg-slate-50">
+                    <input id="taskInput" type="text" placeholder="Tulis tugas baru..." class="flex-1 p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500">
+                    <input id="dateInput" type="date" class="p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500 text-slate-500">
+                    <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition">Simpan</button>
+                </div>
+                
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-bold text-xl"><i class="fas fa-list-check mr-2 text-blue-600"></i> Daftar Tugas</h3>
+                        <span id="taskCount" class="bg-blue-100 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">0 Tugas</span>
+                    </div>
+                    <div id="taskList" class="space-y-4">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        <div>
+            <h2 class="text-3xl font-bold mb-6">Tentang TaskHub</h2>
+            <p class="text-slate-600 leading-relaxed">TaskHub dirancang untuk produktivitas tim dan individu. Meskipun database saat ini masih berbasis penyimpanan lokal (Local Storage), visi kami adalah membangun ekosistem manajemen tugas tercanggih di dunia.</p>
+        </div>
+        <div id="contact">
+            <h2 class="text-3xl font-bold mb-6">Hubungi Kami</h2>
+            <div class="space-y-4">
+                <input type="email" placeholder="Email Anda" class="w-full p-4 border rounded-xl outline-none focus:border-blue-500">
+                <textarea placeholder="Pesan" class="w-full p-4 border rounded-xl outline-none focus:border-blue-500"></textarea>
+                <button class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-black transition">Kirim Pesan</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-400 border-t">
+        <p>&copy; 2026 TaskHub Platform.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
