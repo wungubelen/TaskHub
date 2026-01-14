@@ -1,31 +1,44 @@
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background: #f3f4f6;
+  background: #f4f6f8;
 }
 
 nav {
   background: #2563eb;
-  color: white;
-  padding: 15px;
+  padding: 12px;
 }
 
-.container {
+nav a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 60px;
+  text-align: center;
+  background: #1e40af;
+  color: white;
+}
+
+.btn {
   background: white;
-  padding: 20px;
+  color: #1e40af;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.section {
+  background: white;
   margin: 30px auto;
-  width: 400px;
+  padding: 20px;
+  max-width: 600px;
   border-radius: 8px;
 }
 
-input, button {
-  padding: 8px;
-  margin-top: 10px;
+input, textarea, button {
   width: 100%;
-}
-
-li {
   margin-top: 10px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
+  padding: 8px;
 }
