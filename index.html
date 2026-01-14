@@ -2,36 +2,24 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>TaskHub | All-in-One Task & Productivity Platform</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>TaskHub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>TaskHub</h1>
-  <p>All-in-One Task & Productivity Platform</p>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="features.html">Fitur</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+<nav>
+  <h2>TaskHub</h2>
+</nav>
 
-<section class="hero">
-  <h2>Kelola Tugas Lebih Mudah dan Terorganisir</h2>
-  <p>
-    TaskHub membantu mahasiswa, pekerja, dan tim kecil
-    dalam mengatur tugas, jadwal, dan deadline.
-  </p>
+<section class="container">
+  <h3>Manajemen Tugas</h3>
 
-  <!-- TOMBOL SUDAH BISA DIKLIK -->
-  <a href="features.html" class="btn">Mulai Sekarang</a>
+  <input type="text" id="taskInput" placeholder="Masukkan tugas">
+  <button onclick="addTask()">Tambah</button>
+
+  <ul id="taskList"></ul>
 </section>
 
-<footer>
-  <p>© 2026 TaskHub</p>
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
