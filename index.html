@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskHub Pro | Proyek SaaS Mahasiswa</title>
+    <title>TaskHub | Proyek SaaS Mahasiswa v1.2</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -26,59 +26,41 @@
             <a href="#features" class="hover:text-blue-600 transition">Fitur</a>
             <a href="#app" class="hover:text-blue-600 transition text-blue-600">Mulai App</a>
             <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
-            <a href="#contact" class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Hubungi Kami</a>
+            <a href="#contact" class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Kontak Kami</a>
         </div>
     </nav>
 
     <section id="home" class="pt-48 pb-24 px-6 relative overflow-hidden text-center">
         <div class="max-w-7xl mx-auto relative z-10">
-            <span data-aos="fade-down" class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-sm font-bold rounded-full mb-6 uppercase tracking-widest">Proyek SaaS Mahasiswa v1.2</span>
+            <div data-aos="fade-down" class="inline-block px-6 py-2 bg-blue-50 text-blue-600 text-sm font-bold rounded-full mb-8 border border-blue-100 shadow-sm">
+                PROYEK SAAS MAHASISWA V1.2
+            </div>
             
             <h1 data-aos="fade-up" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter text-slate-900">
-                Kelola Tugas Mahasiswa <br><span class="gradient-text">Lebih Produktif.</span>
+                Fokus Pada Apa yang <br><span class="gradient-text">Paling Penting.</span>
             </h1>
             <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-slate-500 max-w-2xl mx-auto mb-12">
-                TaskHub membantu Anda mencatat jadwal kuliah, tugas, dan progres proyek dalam satu dashboard statis yang responsif.
+                TaskHub adalah solusi cerdas untuk mengelola tugas kuliah dan proyek akademik Anda secara efisien dalam satu tempat.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#app" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-blue-200">Buka Workspace</a>
-                <a href="#features" class="px-10 py-5 bg-white border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Lihat Fitur</a>
+                <a href="#features" class="px-10 py-5 bg-white border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Pelajari Fitur</a>
             </div>
         </div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/30 blur-[120px] rounded-full -z-10"></div>
-    </section>
-
-    <section id="features" class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-            <div data-aos="fade-up" class="p-10 rounded-3xl border border-slate-100 bg-slate-50/30">
-                <i class="fas fa-list-check text-3xl text-blue-600 mb-6"></i>
-                <h3 class="text-2xl font-bold mb-4">Task Management</h3>
-                <p class="text-slate-500">Mencatat dan mengelola tugas kuliah harian dengan status progres yang jelas.</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="100" class="p-10 rounded-3xl border border-slate-100 bg-slate-50/30">
-                <i class="fas fa-calendar-day text-3xl text-purple-600 mb-6"></i>
-                <h3 class="text-2xl font-bold mb-4">Jadwal & Deadline</h3>
-                <p class="text-slate-500">Pantau tenggat waktu tugas agar tidak ada yang terlewatkan.</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="200" class="p-10 rounded-3xl border border-slate-100 bg-slate-50/30">
-                <i class="fas fa-mobile-alt text-3xl text-green-600 mb-6"></i>
-                <h3 class="text-2xl font-bold mb-4">Desain Responsif</h3>
-                <p class="text-slate-500">Tampilan optimal baik saat dibuka di laptop, tablet, maupun smartphone.</p>
-            </div>
-        </div>
     </section>
 
     <section id="app" class="py-24 px-6 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold mb-4">Workspace Tugas</h2>
-                <p class="text-slate-500">Input tugas Anda di bawah ini (Data tersimpan otomatis di browser).</p>
+                <p class="text-slate-500 italic">Kelola daftar pekerjaan Anda di sini secara statis.</p>
             </div>
 
             <div class="bg-white rounded-[32px] border border-slate-200 shadow-2xl overflow-hidden">
                 <div class="p-8 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row gap-4">
-                    <input id="taskInput" type="text" placeholder="Nama tugas kuliah..." class="flex-1 p-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 transition-all">
-                    <input id="dateInput" type="date" class="p-4 rounded-2xl border border-slate-200 outline-none">
+                    <input id="taskInput" type="text" placeholder="Masukkan nama tugas..." class="flex-1 p-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 transition-all">
+                    <input id="dateInput" type="date" class="p-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10">
                     <button onclick="addTask()" class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">Simpan</button>
                 </div>
                 
@@ -97,33 +79,43 @@
     <section id="contact" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
             <div id="about">
-                <h2 class="text-4xl font-extrabold mb-6">Tentang TaskHub</h2>
-                <p class="text-slate-500 leading-relaxed text-lg mb-6">
-                    TaskHub merupakan hasil pengembangan proyek mahasiswa untuk memenuhi implementasi website statis front-end. Platform ini berfokus pada kemudahan pengelolaan tugas akademik.
+                <h2 class="text-4xl font-extrabold mb-6">Hubungi Tim Kami</h2>
+                <p class="text-slate-500 leading-relaxed text-lg mb-8">
+                    Ada pertanyaan mengenai pengembangan TaskHub atau butuh bantuan teknis? Tim mahasiswa kami siap membantu Anda.
                 </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 text-slate-700 font-bold">
-                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-5 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <span>mahasiswa@university.ac.id</span>
-                    </div>
-                    <div class="flex items-center gap-4 text-slate-700 font-bold">
-                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-phone"></i>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email Resmi</p>
+                            <p class="text-lg font-bold text-slate-800">support@taskhub.mahasiswa.ac.id</p>
                         </div>
-                        <span>+62 812 3456 7890</span>
+                    </div>
+
+                    <div class="flex items-center gap-5 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-green-200 transition">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">WhatsApp Hotine</p>
+                            <p class="text-lg font-bold text-slate-800">+62 812-3456-7890</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-slate-50 p-10 rounded-[40px] border border-slate-100">
-                <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+            <div class="bg-white p-10 rounded-[40px] border border-slate-200 shadow-xl shadow-slate-100/50">
+                <h3 class="text-2xl font-bold mb-6">Kirim Masukan</h3>
                 <form class="space-y-4">
-                    <input type="text" placeholder="Nama Lengkap" class="w-full p-4 rounded-2xl border bg-white outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="email" placeholder="Email Aktif" class="w-full p-4 rounded-2xl border bg-white outline-none focus:ring-2 focus:ring-blue-500">
-                    <textarea placeholder="Pesan Anda..." rows="4" class="w-full p-4 rounded-2xl border bg-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                    <button type="button" onclick="alert('Pesan terkirim!')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition shadow-xl">Kirim Sekarang</button>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Nama" class="w-full p-4 rounded-2xl border bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <input type="email" placeholder="Email" class="w-full p-4 rounded-2xl border bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    </div>
+                    <textarea placeholder="Bagaimana kami bisa membantu Anda?" rows="4" class="w-full p-4 rounded-2xl border bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+                    <button type="button" onclick="alert('Terima kasih! Pesan Anda telah kami terima.')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition shadow-xl">Kirim Pesan Sekarang</button>
                 </form>
             </div>
         </div>
@@ -131,11 +123,11 @@
 
     <footer class="py-12 bg-slate-900 text-center text-white">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-2xl font-black mb-4">TaskHub<span class="text-blue-500">.</span></p>
-            <p class="text-slate-400 text-sm mb-8">Proyek SaaS Mahasiswa v1.2 - All Rights Reserved &copy; 2026</p>
+            <p class="text-2xl font-black mb-2 tracking-tighter">TaskHub<span class="text-blue-500">.</span></p>
+            <p class="text-slate-500 text-sm mb-8 font-medium italic">Versi Mahasiswa 1.2 - Proyek Web Statis Front-End</p>
             <div class="flex justify-center gap-6">
-                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
-                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-instagram text-2xl"></i></a>
             </div>
         </div>
     </footer>
