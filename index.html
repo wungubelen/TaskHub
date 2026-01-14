@@ -14,61 +14,73 @@
 </head>
 <body class="bg-[#f8fafc] text-slate-900 font-['Plus_Jakarta_Sans']">
 
-    <nav class="fixed w-full z-[100] glass px-6 py-4 flex justify-between items-center shadow-sm">
-        <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-                <i class="fas fa-layer-group text-white text-xl"></i>
+    <nav class="fixed w-full z-[100] glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
+                    <i class="fas fa-layer-group text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight">Task<span class="text-blue-600">Hub</span></span>
             </div>
-            <span class="text-2xl font-extrabold tracking-tight">Task<span class="text-blue-600">Hub</span></span>
-        </div>
-        <div class="hidden md:flex items-center space-x-8 font-medium">
-            <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
-            <a href="#fitur" class="hover:text-blue-600 transition">Fitur</a>
-            <a href="#app" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1">Mulai App</a>
-            <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
-            <a href="#contact" class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Kontak</a>
+            <div class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
+                <a href="#features" class="hover:text-blue-600 transition">Fitur</a>
+                <a href="#app" class="hover:text-blue-600 transition text-blue-600 font-bold underline decoration-2 underline-offset-8">Mulai App</a>
+                <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
+                <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Kontak</a>
+            </div>
         </div>
     </nav>
 
     <section id="home" class="pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <h1 data-aos="fade-up" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight text-slate-900">
+            <h1 data-aos="fade-up" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
                 Kelola Tugas Dengan <br><span class="gradient-text">Gaya Modern.</span>
             </h1>
             <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-slate-500 max-w-2xl mx-auto mb-12">
-                TaskHub membantu Anda mencatat, mengatur jadwal, dan memantau progres pekerjaan secara real-time. Platform minimalis untuk produktivitas maksimal.
+                TaskHub membantu Anda mencatat, mengatur jadwal, dan memantau progres pekerjaan secara real-time.
             </p>
         </div>
     </section>
 
-    <section id="app" class="py-24 bg-white border-y border-slate-100">
+    <section id="app" class="py-20 bg-white border-y border-slate-100 shadow-inner">
         <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Task Manager</h2>
-                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden animate-glow">
                 <div class="p-8 border-b border-slate-100 flex flex-col md:flex-row md:items-center gap-4 bg-slate-50">
-                    <input id="taskInput" type="text" placeholder="Tulis tugas baru..." class="flex-1 p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                    <input id="taskInput" type="text" placeholder="Tulis tugas baru..." class="flex-1 p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500">
                     <input id="dateInput" type="date" class="p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500 text-slate-500">
-                    <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all active:scale-95">Tambah</button>
+                    <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition">Simpan</button>
                 </div>
                 
                 <div class="p-8">
                     <div class="flex items-center justify-between mb-8">
-                        <h3 class="font-bold text-xl tracking-tight">Daftar Pekerjaan</h3>
-                        <span id="taskCount" class="bg-blue-100 text-blue-600 text-xs font-bold px-4 py-1.5 rounded-full uppercase">0 Tugas</span>
+                        <h3 class="font-bold text-xl"><i class="fas fa-list-check mr-2 text-blue-600"></i> Daftar Tugas</h3>
+                        <span id="taskCount" class="bg-blue-100 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">0 Tugas</span>
                     </div>
-                    <div id="taskList" class="space-y-4 min-h-[150px]">
+                    <div id="taskList" class="space-y-4">
                         </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-slate-50 border-t border-slate-100 text-center">
-        <p class="text-slate-400 text-sm font-medium">&copy; 2026 TaskHub Platform. Didesain untuk Efisiensi.</p>
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        <div>
+            <h2 class="text-3xl font-bold mb-6">Tentang TaskHub</h2>
+            <p class="text-slate-600 leading-relaxed">TaskHub dirancang untuk produktivitas tim dan individu. Meskipun database saat ini masih berbasis penyimpanan lokal (Local Storage), visi kami adalah membangun ekosistem manajemen tugas tercanggih di dunia.</p>
+        </div>
+        <div id="contact">
+            <h2 class="text-3xl font-bold mb-6">Hubungi Kami</h2>
+            <div class="space-y-4">
+                <input type="email" placeholder="Email Anda" class="w-full p-4 border rounded-xl outline-none focus:border-blue-500">
+                <textarea placeholder="Pesan" class="w-full p-4 border rounded-xl outline-none focus:border-blue-500"></textarea>
+                <button class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-black transition">Kirim Pesan</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-400 border-t">
+        <p>&copy; 2026 TaskHub Platform.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
