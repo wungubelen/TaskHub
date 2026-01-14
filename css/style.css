@@ -1,44 +1,31 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
+/* Custom Styles */
+.glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-nav {
-  background: #2563eb;
-  padding: 12px;
+.gradient-text {
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
+.animate-glow {
+    animation: glow 4s infinite alternate;
 }
 
-.hero {
-  padding: 60px;
-  text-align: center;
-  background: #1e40af;
-  color: white;
+@keyframes glow {
+    from { box-shadow: 0 0 20px -5px rgba(37, 99, 235, 0.1); }
+    to { box-shadow: 0 0 40px 0px rgba(37, 99, 235, 0.2); }
 }
 
-.btn {
-  background: white;
-  color: #1e40af;
-  padding: 10px 20px;
-  text-decoration: none;
+/* Custom Task Item Animation */
+.task-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section {
-  background: white;
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
-  border-radius: 8px;
-}
-
-input, textarea, button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 8px;
+.task-item:hover {
+    transform: translateX(10px);
+    background-color: #f1f5f9;
 }
