@@ -50,3 +50,38 @@ function toggleTask(index) { tasks[index].done = !tasks[index].done; renderTasks
 function deleteTask(index) { tasks.splice(index, 1); renderTasks(); }
 
 renderTasks();
+<script>
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    function renderTasks() {
+        const list = document.getElementById('taskList');
+        list.innerHTML = '';
+        tasks.forEach((task, index) => {
+            const div = document.createElement('div');
+            div.className = "flex items-center justify-between p-5 bg-white border rounded-2xl shadow-sm";
+            div.innerHTML = `
+                <div class="flex flex-col">
+                    <h4 class="font-bold">${task.title}</h4>
+                    <span class="text-xs text-slate-400 uppercase font-bold">${task.date}</span>
+                </div>
+                <button onclick="deleteTask(${index})" class="text-red-400 hover:text-red-600"><i class="fas fa-trash"></i></button>`;
+            list.appendChild(div);
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function addTask() {
+        const input = document.getElementById('taskInput');
+        const date = document.getElementById('dateInput');
+        if(!input.value) return alert("Isi tugas!");
+        tasks.unshift({ title: input.value, date: date.value, done: false });
+        input.value = ''; date.value = '';
+        renderTasks();
+    }
+
+    function deleteTask(index) {
+        tasks.splice(index, 1);
+        renderTasks();
+    }
+    renderTasks();
+</script>
