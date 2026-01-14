@@ -1,31 +1,39 @@
 /* Custom Styles */
-.glass {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+.glass-nav {
+    background: rgba(252, 253, 254, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, #2563eb, #9333ea);
+    background: linear-gradient(to right, #2563eb, #7c3aed);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
 
-.animate-glow {
-    animation: glow 4s infinite alternate;
+/* Animasi Task Card */
+.task-card {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes glow {
-    from { box-shadow: 0 0 20px -5px rgba(37, 99, 235, 0.1); }
-    to { box-shadow: 0 0 40px 0px rgba(37, 99, 235, 0.2); }
-}
-
-/* Custom Task Item Animation */
-.task-item {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.task-item:hover {
+.task-card:hover {
     transform: translateX(10px);
-    background-color: #f1f5f9;
+    border-color: #3b82f6;
 }
+
+.done-state {
+    background-color: #f8fafc;
+    opacity: 0.6;
+}
+
+.done-state h4 {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
