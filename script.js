@@ -1,21 +1,30 @@
-AOS.init({
-    duration: 800,
-    once: true
-});
+// Inisialisasi AOS (Animasi Muncul saat Scroll)
+// Pastikan library AOS sudah dipanggil di index.html
+if (typeof AOS !== 'undefined') {
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+}
 
-// Logic Task Manager
+// Fitur Utama: Manajemen Tugas menggunakan LocalStorage
+// Memuat data yang sudah tersimpan di browser
 let tasks = JSON.parse(localStorage.getItem('taskhub_data')) || [];
 
+// Fungsi untuk menampilkan daftar tugas ke layar
 function renderTasks() {
-    const taskList = document.getElementById('taskList');
+    const container = document.getElementById('taskList');
     const taskCount = document.getElementById('taskCount');
     
-    taskList.innerHTML = '';
+    if (!container) return; // Mencegah error jika elemen tidak ditemukan
+
+    container.innerHTML = '';
     taskCount.innerText = `${tasks.length} Tugas`;
 
     if (tasks.length === 0) {
-        taskList.innerHTML = `
+        container.innerHTML = `
             <div class="text-center py-12">
+                <i class="fas fa-clipboard-list text-slate-200 text-5xl mb-4"></i>
                 <p class="text-slate-400 italic">Belum ada tugas hari ini. Mulai dengan menambah tugas baru!</p>
             </div>
         `;
@@ -23,58 +32,64 @@ function renderTasks() {
     }
 
     tasks.forEach((task, index) => {
-        const item = document.createElement('div');
-        item.className = "task-item flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm";
-        item.innerHTML = `
+        const div = document.createElement('div');
+        div.className = "task-card bg-white p-5 rounded-2xl border border-slate-100 flex justify-between items-center shadow-sm mb-4";
+        div.innerHTML = `
             <div class="flex items-center space-x-4">
-                <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 font-bold">
-                    ${index + 1}
-                </div>
+                <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${index})" class="w-5 h-5 accent-blue-600 cursor-pointer">
                 <div>
-                    <h4 class="font-bold text-slate-800">${task.title}</h4>
-                    <p class="text-xs text-slate-500 font-medium">
-                        <i class="far fa-calendar-check mr-1"></i> ${task.date || 'Tanpa Deadline'}
+                    <h4 class="font-bold ${task.completed ? 'line-through text-slate-400' : 'text-slate-800'} transition-all">${task.title}</h4>
+                    <p class="text-xs text-slate-400 font-medium">
+                        <i class="far fa-calendar-alt mr-1"></i> Deadline: ${task.date || 'Tidak ada'}
                     </p>
                 </div>
             </div>
-            <button onclick="removeTask(${index})" class="w-8 h-8 flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition">
-                <i class="fas fa-trash"></i>
+            <button onclick="deleteTask(${index})" class="text-slate-300 hover:text-red-500 transition-colors px-2">
+                <i class="fas fa-trash-alt"></i>
             </button>
         `;
-        taskList.appendChild(item);
+        container.appendChild(div);
     });
 
-    // Simpan ke memori browser
+    // Simpan perubahan ke memori browser
     localStorage.setItem('taskhub_data', JSON.stringify(tasks));
 }
 
+// Fungsi untuk menambah tugas baru
 function addTask() {
-    const titleInput = document.getElementById('taskInput');
-    const dateInput = document.getElementById('dateInput');
+    const input = document.getElementById('taskInput');
+    const date = document.getElementById('dateInput');
 
-    if (titleInput.value.trim() === "") {
-        alert("Silakan isi nama tugas!");
+    if (!input.value.trim()) {
+        alert("Silakan isi nama tugas terlebih dahulu!");
         return;
     }
 
-    const newTask = {
-        title: titleInput.value,
-        date: dateInput.value,
-        id: Date.now()
-    };
+    tasks.push({
+        title: input.value,
+        date: date.value,
+        completed: false
+    });
 
-    tasks.push(newTask);
-    titleInput.value = '';
-    dateInput.value = '';
+    // Reset input setelah menambah
+    input.value = '';
+    date.value = '';
     renderTasks();
 }
 
-function removeTask(index) {
-    if(confirm('Hapus tugas ini?')) {
+// Fungsi untuk menandai tugas selesai/belum
+function toggleTask(index) {
+    tasks[index].completed = !tasks[index].completed;
+    renderTasks();
+}
+
+// Fungsi untuk menghapus tugas
+function deleteTask(index) {
+    if (confirm("Hapus tugas ini?")) {
         tasks.splice(index, 1);
         renderTasks();
     }
 }
 
-// Jalankan saat pertama kali buka web
-renderTasks();
+// Menjalankan fungsi render pertama kali saat web dibuka
+document.addEventListener('DOMContentLoaded', renderTasks);
