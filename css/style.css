@@ -28,23 +28,4 @@
 .task-item:hover {
     transform: translateX(10px);
     background-color: #f1f5f9;
-    .glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.task-card {
-    transition: all 0.3s ease;
-}
-
-.task-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.done-text {
-    text-decoration: line-through;
-    color: #94a3b8;
-}
 }
