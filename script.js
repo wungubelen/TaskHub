@@ -11,7 +11,8 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      ${task}
+      <strong>${task.name}</strong><br>
+      Deadline: ${task.deadline}
       <button onclick="deleteTask(${index})">Hapus</button>
     `;
     list.appendChild(li);
@@ -19,13 +20,17 @@ function renderTasks() {
 }
 
 function addTask() {
-  const input = document.getElementById("taskInput");
-  if (input.value === "") return;
+  const name = document.getElementById("taskInput").value;
+  const deadline = document.getElementById("deadlineInput").value;
 
-  tasks.push(input.value);
-  input.value = "";
+  if (name === "" || deadline === "") return;
+
+  tasks.push({ name, deadline });
   saveTasks();
   renderTasks();
+
+  document.getElementById("taskInput").value = "";
+  document.getElementById("deadlineInput").value = "";
 }
 
 function deleteTask(index) {
