@@ -18,66 +18,66 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .task-card { transition: all 0.3s ease; }
-        .task-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
-        .done h4 { text-decoration: line-through; color: #94a3b8; }
     </style>
 </head>
 <body class="bg-[#fcfdfe] text-slate-900">
 
-    <nav class="fixed w-full z-[100] glass-nav px-6 py-4 flex justify-between items-center shadow-sm">
+    <nav class="fixed w-full z-[100] glass-nav px-6 py-4 flex justify-between items-center shadow-sm border-b border-slate-100">
         <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
                 <i class="fas fa-layer-group text-white text-xl"></i>
             </div>
             <span class="text-2xl font-extrabold tracking-tight">Task<span class="text-blue-600">Hub</span></span>
         </div>
         <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-600">
-            <a href="#home" class="hover:text-blue-600">Beranda</a>
-            <a href="#app" class="text-blue-600 border-b-2 border-blue-600">Mulai App</a>
-            <a href="#contact" class="bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Kontak</a>
+            <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
+            <a href="#app" class="hover:text-blue-600 transition text-blue-600 font-bold">Mulai App</a>
+            <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
+            <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-blue-600 transition">Kontak</a>
         </div>
     </nav>
 
-    <section id="home" class="pt-48 pb-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+    <section id="home" class="pt-56 pb-32 px-6 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter">
                 Kelola Tugas Dengan <br><span class="gradient-text">Gaya Modern.</span>
             </h1>
-            <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
+            <p class="text-xl text-slate-500 mb-12 max-w-2xl mx-auto">
                 TaskHub membantu Anda mencatat, mengatur jadwal, dan memantau progres pekerjaan secara real-time dengan antarmuka yang minimalis.
             </p>
-            <div class="flex justify-center gap-4">
-                <a href="#app" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:scale-105 transition">Buka Workspace</a>
+            <div class="flex justify-center">
+                <a href="#app" class="bg-blue-600 text-white px-12 py-5 rounded-2xl font-bold shadow-xl shadow-blue-100 hover:scale-105 transition">Buka Workspace</a>
             </div>
         </div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-50/50 blur-[120px] rounded-full -z-10"></div>
     </section>
 
-    <section id="app" class="py-20 px-6 bg-slate-50 border-y border-slate-100">
+    <section id="app" class="py-24 px-6 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold mb-2">Workspace Saya</h2>
-                <p class="text-slate-500 italic">Data Anda disimpan secara lokal di browser ini.</p>
+                <p class="text-slate-500 italic">Data disimpan secara otomatis di browser.</p>
             </div>
 
             <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-200 mb-8">
                 <div class="flex flex-col md:flex-row gap-4">
                     <input id="taskInput" type="text" placeholder="Apa yang ingin dikerjakan?" class="flex-1 p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-500 transition">
-                    <input id="dateInput" type="date" class="p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-                    <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition">Tambah</button>
+                    <button onclick="addTask()" class="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition">Tambah</button>
                 </div>
             </div>
 
-            <div id="taskList" class="space-y-4 min-h-[200px]">
+            <div id="taskList" class="space-y-4 min-h-[150px]">
                 </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 px-6 text-center">
-        <h2 class="text-3xl font-bold mb-8">Hubungi Kami</h2>
-        <div class="flex justify-center gap-8 text-slate-600">
-            <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-600"></i> halo@taskhub.id</div>
-            <div class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-500"></i> +62 812 3456 7890</div>
+    <section id="contact" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Hubungi Kami</h2>
+            <div class="flex justify-center gap-10 font-bold text-slate-700">
+                <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-600"></i> halo@taskhub.id</div>
+                <div class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-500"></i> +62 812-3456-7890</div>
+            </div>
         </div>
     </section>
 
@@ -88,82 +88,27 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-
-        // Ambil data dari penyimpanan browser
-        let tasks = JSON.parse(localStorage.getItem('my_tasks')) || [];
-
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         function renderTasks() {
-            const container = document.getElementById('taskList');
-            container.innerHTML = '';
-
-            if (tasks.length === 0) {
-                container.innerHTML = '<p class="text-center text-slate-400 py-10">Belum ada tugas. Mulailah dengan menambah tugas baru!</p>';
-                return;
-            }
-
-            tasks.forEach((task, index) => {
-                const div = document.createElement('div');
-                div.className = `task-card flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm ${task.done ? 'done opacity-60' : ''}`;
-                div.innerHTML = `
-                    <div class="flex items-center gap-4">
-                        <button onclick="toggleTask(${index})" class="w-6 h-6 border-2 border-blue-600 rounded-full flex items-center justify-center">
-                            ${task.done ? '<div class="w-3 h-3 bg-blue-600 rounded-full"></div>' : ''}
-                        </button>
-                        <div>
-                            <h4 class="font-bold text-slate-800">${task.title}</h4>
-                            <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">${task.date || 'Tanpa Deadline'}</p>
-                        </div>
-                    </div>
-                    <button onclick="deleteTask(${index})" class="text-slate-300 hover:text-red-500 transition">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                `;
-                container.appendChild(div);
+            const list = document.getElementById('taskList');
+            list.innerHTML = tasks.length ? '' : '<p class="text-center text-slate-300 py-10">Belum ada tugas hari ini.</p>';
+            tasks.forEach((t, i) => {
+                const d = document.createElement('div');
+                d.className = "flex justify-between items-center p-5 bg-white border rounded-2xl shadow-sm";
+                d.innerHTML = `<h4 class="font-bold">${t.title}</h4><button onclick="del(${i})" class="text-slate-300 hover:text-red-500"><i class="fas fa-trash"></i></button>`;
+                list.appendChild(d);
             });
-            localStorage.setItem('my_tasks', JSON.stringify(tasks));
+            localStorage.setItem('tasks', JSON.stringify(tasks));
         }
-
         function addTask() {
             const input = document.getElementById('taskInput');
-            const date = document.getElementById('dateInput');
-            if (!input.value.trim()) return;
-            tasks.unshift({ title: input.value, date: date.value, done: false });
+            if(!input.value.trim()) return;
+            tasks.unshift({title: input.value, done: false});
             input.value = '';
-            date.value = '';
             renderTasks();
         }
-
-        function toggleTask(index) {
-            tasks[index].done = !tasks[index].done;
-            renderTasks();
-        }
-
-        function deleteTask(index) {
-            tasks.splice(index, 1);
-            renderTasks();
-        }
-
+        function del(i) { tasks.splice(i, 1); renderTasks(); }
         renderTasks();
     </script>
 </body>
-    <section id="app" class="py-20 px-6 bg-slate-50 border-y border-slate-100">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold mb-2">Workspace Saya</h2>
-            <p class="text-slate-500 italic text-sm">Input tugas kuliah atau proyek Anda di sini.</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-200 mb-8">
-            <div class="flex flex-col md:flex-row gap-4">
-                <input id="taskInput" type="text" placeholder="Tulis tugas baru..." class="flex-1 p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition">
-                <input id="dateInput" type="date" class="p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
-                <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">Tambah</button>
-            </div>
-        </div>
-
-        <div id="taskList" class="space-y-4 min-h-[150px]">
-            <p class="text-center text-slate-400 py-10">Daftar tugas masih kosong.</p>
-        </div>
-    </div>
-</section>
 </html>
