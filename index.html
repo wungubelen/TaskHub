@@ -3,118 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskHub | Personal Task Management</title>
+    <title>TaskHub | Kelola Tugas Modern</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Plus_Jakarta_Sans', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .task-card { transition: all 0.3s ease; }
+        .task-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
+        .done h4 { text-decoration: line-through; color: #94a3b8; }
+    </style>
 </head>
-<body class="bg-[#fcfdfe] text-slate-900 font-['Plus_Jakarta_Sans']">
+<body class="bg-[#fcfdfe] text-slate-900">
 
     <nav class="fixed w-full z-[100] glass-nav px-6 py-4 flex justify-between items-center shadow-sm">
         <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                 <i class="fas fa-layer-group text-white text-xl"></i>
             </div>
             <span class="text-2xl font-extrabold tracking-tight">Task<span class="text-blue-600">Hub</span></span>
         </div>
         <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-600">
-            <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
-            <a href="#features" class="hover:text-blue-600 transition">Fitur</a>
-            <a href="#app" class="hover:text-blue-600 transition text-blue-600 font-bold border-b-2 border-blue-600">Mulai App</a>
-            <a href="#contact" class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition">Kontak</a>
+            <a href="#home" class="hover:text-blue-600">Beranda</a>
+            <a href="#app" class="text-blue-600 border-b-2 border-blue-600">Mulai App</a>
+            <a href="#contact" class="bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Kontak</a>
         </div>
     </nav>
 
-    <section id="home" class="pt-56 pb-24 px-6 relative overflow-hidden text-center">
-        <div class="max-w-7xl mx-auto relative z-10">
-            <h1 data-aos="fade-up" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter text-slate-900">
+    <section id="home" class="pt-48 pb-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                 Kelola Tugas Dengan <br><span class="gradient-text">Gaya Modern.</span>
             </h1>
-            <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-slate-500 max-w-2xl mx-auto mb-12">
+            <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
                 TaskHub membantu Anda mencatat, mengatur jadwal, dan memantau progres pekerjaan secara real-time dengan antarmuka yang minimalis.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#app" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-blue-200">Buka Workspace</a>
-                <a href="#features" class="px-10 py-5 bg-white border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Lihat Fitur</a>
+            <div class="flex justify-center gap-4">
+                <a href="#app" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:scale-105 transition">Buka Workspace</a>
             </div>
         </div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/30 blur-[120px] rounded-full -z-10"></div>
     </section>
 
-    <section id="app" class="py-24 px-6 bg-slate-50 border-y border-slate-100">
+    <section id="app" class="py-20 px-6 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold mb-4">Workspace Saya</h2>
-                <p class="text-slate-500">Input dan kelola daftar tugas Anda secara instan.</p>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-2">Workspace Saya</h2>
+                <p class="text-slate-500 italic">Data Anda disimpan secara lokal di browser ini.</p>
             </div>
 
-            <div class="bg-white rounded-[32px] border border-slate-200 shadow-2xl overflow-hidden">
-                <div class="p-8 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row gap-4">
-                    <input id="taskInput" type="text" placeholder="Apa rencana hari ini?" class="flex-1 p-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 transition-all">
-                    <input id="dateInput" type="date" class="p-4 rounded-2xl border border-slate-200 outline-none">
-                    <button onclick="addTask()" class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition">Tambah</button>
-                </div>
-                
-                <div class="p-8 min-h-[300px]">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="font-bold text-slate-400 uppercase tracking-widest text-xs">Daftar Aktif</h4>
-                        <span id="taskCount" class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-xs font-black">0</span>
-                    </div>
-                    <div id="taskList" class="space-y-4">
-                        </div>
+            <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-200 mb-8">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input id="taskInput" type="text" placeholder="Apa yang ingin dikerjakan?" class="flex-1 p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-500 transition">
+                    <input id="dateInput" type="date" class="p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none">
+                    <button onclick="addTask()" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition">Tambah</button>
                 </div>
             </div>
+
+            <div id="taskList" class="space-y-4 min-h-[200px]">
+                </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-            <div>
-                <h2 class="text-4xl font-extrabold mb-6 text-slate-900">Hubungi Kami</h2>
-                <p class="text-slate-500 mb-8">Butuh bantuan atau ingin memberikan masukan? Silakan hubungi kami melalui saluran di bawah ini.</p>
-                
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-400 uppercase">Email</p>
-                            <p class="font-bold text-slate-800">halo@taskhub.id</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-400 uppercase">WhatsApp</p>
-                            <p class="font-bold text-slate-800">+62 812-3694-8941</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-slate-50 p-8 rounded-[32px] border border-slate-100">
-                <form class="space-y-4">
-                    <input type="text" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl border bg-white outline-none focus:ring-2 focus:ring-blue-500">
-                    <textarea placeholder="Pesan" rows="3" class="w-full p-4 rounded-xl border bg-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                    <button type="button" onclick="alert('Pesan terkirim!')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition">Kirim Pesan</button>
-                </form>
-            </div>
+    <section id="contact" class="py-20 px-6 text-center">
+        <h2 class="text-3xl font-bold mb-8">Hubungi Kami</h2>
+        <div class="flex justify-center gap-8 text-slate-600">
+            <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-600"></i> halo@taskhub.id</div>
+            <div class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-500"></i> +62 812 3456 7890</div>
         </div>
     </section>
 
-    <footer class="py-12 text-center border-t border-slate-100">
-        <p class="text-2xl font-black mb-2">TaskHub<span class="text-blue-600">.</span></p>
-        <p class="text-slate-400 text-sm">© 2026 TaskHub Platform. All Rights Reserved.</p>
+    <footer class="py-10 text-center text-slate-400 text-sm border-t border-slate-100">
+        &copy; 2026 TaskHub Platform. All Rights Reserved.
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script>
+        AOS.init();
+
+        // Ambil data dari penyimpanan browser
+        let tasks = JSON.parse(localStorage.getItem('my_tasks')) || [];
+
+        function renderTasks() {
+            const container = document.getElementById('taskList');
+            container.innerHTML = '';
+
+            if (tasks.length === 0) {
+                container.innerHTML = '<p class="text-center text-slate-400 py-10">Belum ada tugas. Mulailah dengan menambah tugas baru!</p>';
+                return;
+            }
+
+            tasks.forEach((task, index) => {
+                const div = document.createElement('div');
+                div.className = `task-card flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm ${task.done ? 'done opacity-60' : ''}`;
+                div.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleTask(${index})" class="w-6 h-6 border-2 border-blue-600 rounded-full flex items-center justify-center">
+                            ${task.done ? '<div class="w-3 h-3 bg-blue-600 rounded-full"></div>' : ''}
+                        </button>
+                        <div>
+                            <h4 class="font-bold text-slate-800">${task.title}</h4>
+                            <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">${task.date || 'Tanpa Deadline'}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteTask(${index})" class="text-slate-300 hover:text-red-500 transition">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+            localStorage.setItem('my_tasks', JSON.stringify(tasks));
+        }
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const date = document.getElementById('dateInput');
+            if (!input.value.trim()) return;
+            tasks.unshift({ title: input.value, date: date.value, done: false });
+            input.value = '';
+            date.value = '';
+            renderTasks();
+        }
+
+        function toggleTask(index) {
+            tasks[index].done = !tasks[index].done;
+            renderTasks();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            renderTasks();
+        }
+
+        renderTasks();
+    </script>
 </body>
 </html>
