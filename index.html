@@ -16,7 +16,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .task-card { border-left: 4px solid #3b82f6; transition: 0.3s; }
+        .task-card { border-left: 4px solid #3b82f6; }
     </style>
 </head>
 <body class="bg-[#fcfdfe]">
@@ -30,59 +30,58 @@
         </div>
         <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-600">
             <a href="#home" class="hover:text-blue-600">Beranda</a>
-            <a href="#app" class="text-blue-600 font-bold border-b-2 border-blue-600">Mulai App</a>
-            <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-blue-600 transition">Kontak</a>
+            <a href="#app" class="text-blue-600">Mulai App</a>
+            <a href="#contact" class="bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Kontak</a>
         </div>
     </nav>
 
-    <section id="home" class="pt-56 pb-24 px-6 text-center">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter text-slate-900">
+    <section id="home" class="pt-52 pb-20 px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tighter text-slate-900">
             Kelola Tugas Dengan <br><span class="gradient-text">Gaya Modern.</span>
         </h1>
-        <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto">
-            Catat rencana Anda dan biarkan sistem merekam tanggal pengerjaannya secara otomatis.
+        <p class="text-lg text-slate-500 mb-10 max-w-xl mx-auto">
+            Atur rencana kerja Anda dan tentukan deadline secara manual.
         </p>
-        <a href="#app" class="inline-block bg-blue-600 text-white px-12 py-5 rounded-2xl font-bold shadow-xl hover:scale-105 transition">Buka Workspace</a>
     </section>
 
-    <section id="app" class="py-24 px-6 bg-slate-50 border-y border-slate-100">
+    <section id="app" class="py-20 px-6 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold mb-2">Workspace Saya</h2>
-                <p id="currentDateDisplay" class="text-blue-600 font-bold text-sm uppercase tracking-widest"></p>
+                <p class="text-slate-400 text-sm italic">Silakan masukkan tugas dan pilih tanggalnya.</p>
             </div>
 
-            <div class="bg-white p-6 rounded-[32px] shadow-xl border border-slate-200 mb-12">
+            <div class="bg-white p-6 rounded-[32px] shadow-xl border border-slate-200 mb-10">
                 <div class="flex flex-col md:flex-row gap-4">
-                    <input id="taskInput" type="text" placeholder="Ketik tugas di sini..." class="flex-1 p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
-                    <button onclick="addTask()" class="bg-blue-600 text-white px-12 py-5 rounded-2xl font-bold hover:bg-blue-700 transition">Simpan</button>
+                    <input id="taskInput" type="text" placeholder="Ketik tugas di sini..." 
+                           class="flex-1 p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
+                    
+                    <input id="manualDate" type="date" 
+                           class="p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 text-slate-600">
+                    
+                    <button onclick="addTask()" 
+                            class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                        Simpan
+                    </button>
                 </div>
             </div>
 
-            <div id="taskList" class="grid gap-4 min-h-[150px]">
+            <div id="taskList" class="grid gap-4">
                 </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 text-center bg-white">
-        <h2 class="text-3xl font-bold mb-8">Hubungi Kami</h2>
-        <div class="flex flex-wrap justify-center gap-10 font-bold text-slate-600">
-            <div class="flex items-center gap-3"><i class="fas fa-envelope text-blue-600"></i> halo@taskhub.id</div>
-            <div class="flex items-center gap-3"><i class="fab fa-whatsapp text-green-500"></i> +62 812-3456-7890</div>
+    <section id="contact" class="py-20 px-6 text-center">
+        <h2 class="text-2xl font-bold mb-6">Hubungi Kami</h2>
+        <div class="flex flex-wrap justify-center gap-8 text-slate-600 font-medium">
+            <p><i class="fas fa-envelope text-blue-600 mr-2"></i> halo@taskhub.id</p>
+            <p><i class="fab fa-whatsapp text-green-500 mr-2"></i> +62 812-3456-7890</p>
         </div>
     </section>
 
     <script>
-        // FUNGSI 1: MENAMPILKAN TANGGAL HARI INI DI HEADER
-        function showCurrentDate() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('currentDateDisplay').innerText = now.toLocaleDateString('id-ID', options);
-        }
-        showCurrentDate();
-
-        // FUNGSI 2: LOGIKA TUGAS
-        let tasks = JSON.parse(localStorage.getItem('task_v3')) || [];
+        // Memuat data dari memori browser
+        let tasks = JSON.parse(localStorage.getItem('tasks_manual_v4')) || [];
 
         function renderTasks() {
             const list = document.getElementById('taskList');
@@ -94,8 +93,8 @@
                 card.innerHTML = `
                     <div class="flex flex-col gap-1">
                         <h4 class="font-bold text-slate-800 text-lg">${t.title}</h4>
-                        <span class="text-slate-400 text-xs font-semibold">
-                            <i class="far fa-calendar-alt mr-1"></i> ${t.date}
+                        <span class="text-blue-600 text-xs font-bold uppercase tracking-wider">
+                            <i class="far fa-calendar-alt mr-1"></i> Deadline: ${t.userDate}
                         </span>
                     </div>
                     <button onclick="del(${i})" class="text-slate-300 hover:text-red-500 transition px-2">
@@ -104,23 +103,32 @@
                 `;
                 list.appendChild(card);
             });
-            localStorage.setItem('task_v3', JSON.stringify(tasks));
+            localStorage.setItem('tasks_manual_v4', JSON.stringify(tasks));
         }
 
         function addTask() {
             const input = document.getElementById('taskInput');
-            if(!input.value.trim()) return;
+            const dateInput = document.getElementById('manualDate');
             
-            // MENGAMBIL TANGGAL SAAT TOMBOL DIKLIK
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            if(!input.value.trim()) return alert("Tuliskan tugas!");
+            if(!dateInput.value) return alert("Pilih tanggal dulu!");
+
+            // Format tanggal dari YYYY-MM-DD menjadi format lokal yang rapi
+            const dateObj = new Date(dateInput.value);
+            const formattedDate = dateObj.toLocaleDateString('id-ID', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
 
             tasks.unshift({
                 title: input.value,
-                date: dateStr // MENYIMPAN TANGGAL KE DALAM DATA
+                userDate: formattedDate
             });
 
+            // Reset input setelah simpan
             input.value = '';
+            dateInput.value = '';
             renderTasks();
         }
 
